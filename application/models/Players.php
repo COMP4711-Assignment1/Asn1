@@ -5,13 +5,17 @@ class Players extends CI_Model {
 
 	var $data = array(
 		array('id' => '1', 'who' => 'Player1', 'where' => '/player/1',
-			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings'),
+			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings',
+			'one' => 'Player1', 'two' => 'Player2', 'three' => 'Player3', 'four' => 'Player4'),
 		array('id' => '2', 'who' => 'Player2', 'where' => '/player/2',
-			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings'),
+			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings',
+			'one' => 'Player1', 'two' => 'Player2', 'three' => 'Player3', 'four' => 'Player4'),
 		array('id' => '3', 'who' => 'Player3', 'where' => '/player/3',
-			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings'),
+			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings',
+			'one' => 'Player1', 'two' => 'Player2', 'three' => 'Player3', 'four' => 'Player4'),
 		array('id' => '4', 'who' => 'Player4', 'where' => '/player/4',
-			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings'),
+			'recent' => 'Recent transactions', 'current_holds' => 'Current holdings',
+			'one' => 'Player1', 'two' => 'Player2', 'three' => 'Player3', 'four' => 'Player4'),
 	);
 
 	// Constructor
