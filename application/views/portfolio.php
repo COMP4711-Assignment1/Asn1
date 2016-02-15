@@ -1,13 +1,13 @@
 <div class="row">
     <h2><strong>{who}</strong></h2>
     <div>
-		<select name="players" onchange="location = this.options[this.selectedIndex].value;">
-			<option selected disabled class="hideoption">{who}</option>
-			<option value="1">{one}</option>
-			<option value="2">{two}</option>
-			<option value="3">{three}</option>
-			<option value="4">{four}</option>
-		</select>
+	<select name="players" onchange="location = this.options[this.selectedIndex].value;">
+		<option selected disabled class="hideoption">{who}</option>
+		<option value="1">{one}</option>
+		<option value="2">{two}</option>
+		<option value="3">{three}</option>
+		<option value="4">{four}</option>
+	</select>
         <p class="lead">{current_holds}</p>
         <table style="width:100%">
             <tr>
