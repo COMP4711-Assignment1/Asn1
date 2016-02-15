@@ -4,7 +4,7 @@
     <hr id="line"/>
     <a href="{href}"><img src="/data/{mug}" title="{who}" id="oneStock"/></a>
     <br/><h5>Current value: 0</h5>
-    {/stockportfolios}-
+    {/stockportfolios}
 </div> 
 
 <div id="playersPanel">

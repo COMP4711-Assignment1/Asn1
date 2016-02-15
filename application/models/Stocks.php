@@ -1,7 +1,14 @@
 <?php
 
 class Stocks extends CI_Model {
-	var $data = array();
+	var $data = array(
+		array('id' => '1', 'who' => 'Gold', 'mug' => 'gold.png', 'where' => '/stock/1',
+			'what' => '$1000'),
+		array('id' => '2', 'who' => 'Oil', 'mug' => 'oil.png', 'where' => '/stock/2',
+			'what' => '$500'),
+		array('id' => '3', 'who' => 'Bonds', 'mug' => 'bonds.jpg', 'where' => '/stock/3',
+			'what' => '$600')
+	);
 
 	// Constructor
 	public function __construct() {
