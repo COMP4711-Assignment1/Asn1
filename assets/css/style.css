@@ -1,0 +1,30 @@
+/* CSS definition file containing site stylesheet */
+body {
+	background-color:#0C3A6D
+}
+.row>div {
+	margin-bottom:10px;
+}
+#stocksPanel,#playersPanel,.row{
+	text-align:left;
+	color:#ffffff;
+	border-style:solid;
+	width:175px;
+	padding:20px;
+	background-color:#000000;
+}
+#stocksPanel{
+    float:right;
+}
+#playersPanel{
+    float:left;
+}
+.row{
+    width:100%;
+}
+#oneStock,#onePlayer{
+	margin-top:5px;
+}
+.login,.logoff {
+	float: right;
+}
