@@ -33,6 +33,10 @@ class Application extends CI_Controller {
 	function render() {
 		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+		if (empty($this->session->userdata('username')))
+			$this->data['login'] = $this->parser->parse('login', $this->data, true);
+		else 
+			$this->data['login'] = $this->parser->parse('logoff', $this->data, true);
 
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
