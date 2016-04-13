@@ -15,7 +15,8 @@ if (!defined('APPPATH'))
         <div class="container-fluid">
             <div class="navbar">
                 <div class="navbar-inner">
-				{login}
+                    {login}
+                    <a href="<?php echo site_url('User/signup') ?>">Sign up</a>
                 </div>
             </div>           
             <div id="content">

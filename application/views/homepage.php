@@ -13,5 +13,5 @@
     <p><a href="{href}"><p>{who}</p></a>
     <p>Equity: <br/>Cash:</p>
     {/portfolios}
-	<hr>
+    <hr>
 </div>
