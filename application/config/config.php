@@ -4,23 +4,7 @@ if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
 // the menu basics (text navbar)
-$config['menu_choices'] = array(
-	'menudata' => array(
-		array(  'type' => 'Players',
-                        'name1' => 'Bob Monkhouse', 'link1' => '/player/1',
-                        'name2' => 'Elayne Boosler', 'link2' => '/player/2',
-                        'name3' => 'Mark Russell', 'link3' => '/player/3',
-                        'name4' => 'Anonymous', 'link4' => '/player/4',
-                        'name5' => 'Socrates', 'link5' => '/player/5',
-                        'name6' => 'Isaac Asimov', 'link6' => '/player/6',
-                    ),
-                array(  'type' => 'Stocks',
-                        'name1' => 'Gold', 'link1' => '/stock/1',
-                        'name2' => 'Oil', 'link2' => '/stock/2',
-                        'name3' => 'Bonds', 'link3' => '/stock/3',
-                    ), 
-	)
-); 
+$config['menu_choices'] = array(); 
 
 /*
   |--------------------------------------------------------------------------

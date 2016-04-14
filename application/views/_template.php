@@ -15,8 +15,12 @@ if (!defined('APPPATH'))
         <div class="container-fluid">
             <div class="navbar">
                 <div class="navbar-inner">
-                    {login}
-                    <a href="<?php echo site_url('User/signup') ?>">Sign up</a>
+                    {menubar}
+                    <br><br>
+                    <?php
+                        if(ISSET($this->session->userdata['userName']))
+                            echo 'Hello '.$this->session->userdata['userName'];
+                    ?>
                 </div>
             </div>           
             <div id="content">
