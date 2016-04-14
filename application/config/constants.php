@@ -3,6 +3,9 @@
 // location of data folders
 define('DATA_FOLDER', './data');
 
+define('ROLE_USER','user');
+define('ROLE_ADMIN','admin');
+
 /*
 |--------------------------------------------------------------------------
 | File Stream Modes

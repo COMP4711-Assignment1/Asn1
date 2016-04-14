@@ -13,6 +13,16 @@ body {
 	padding:20px;
 	background-color:#000000;
 }
+.admin {
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:175px;
+    padding:20px;
+    background-color:#000000;
+    margin-left:auto; 
+    margin-right:auto;
+}
 #stocksPanel{
     float:right;
 }
@@ -28,6 +38,21 @@ body {
 #oneStock,#onePlayer{
 	margin-top:5px;
 }
-.login,.logoff {
-	float: right;
+.login
+{
+    display: block;
+    text-align: center;
+}
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    color:#ffffff;
+    border-style:solid;
+    width:300px;
+    padding:20px;
+    background-color:#000000;
 }
