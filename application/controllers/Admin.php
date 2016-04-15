@@ -8,9 +8,9 @@ class Admin extends Application {
     
     function index() {
         $this->data['pagebody'] = 'admin';
+        $this->data['content'] = $this->displayDatabase();
+        
         $this->render();
-        $data = array('content' => $this->displayDatabase());
-        $this->parser->parse('admin', $data);
     }
     
     function displayDatabase() {

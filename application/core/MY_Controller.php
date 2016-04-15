@@ -34,23 +34,36 @@ class Application extends CI_Controller {
             $menu = array('menudata' => $this->makeMenu());
             $this->data['menubar'] = $this->parser->parse('_menubar', $menu, true);
             $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-            
+            $this->data['table'] = $this->readXML();
+
             // finally, build the browser page!
             $this->data['data'] = &$this->data;
             $this->parser->parse('_template', $this->data);
 	}
         
+        function readXML() {
+            $url = "http://bsx.jlparry.com/status";
+            $xml = simplexml_load_file($url);
+            $status = get_object_vars($xml);
+            $result = array();
+            foreach($status as $key => $var) {
+                $result[] = array('name' => $key, 'tableData' => $var);
+            }
+            return $result;
+        }
+        
         function makeMenu() {
             $menu = array();
             $menu[] = array('name' => "Home", 'link' => '/');
             $menu[] = array('name' => "Sign up", 'link' => '/Authentication/signup');
+            $menu[] = array('name' => "Status", 'link' => '#myModal', "data" => 'modal');
             
             if(!ISSET($this->session->userdata['userRole'])) { //if not logged in
                 $menu[] = array('name' => 'Login', 'link' => '/Authentication');
             }
             else {
                 $role = $this->session->userdata['userRole'];
-                $id = intval($this->session->userdata['id'])+1;
+                $id = intval($this->session->userdata['id'])+1; //fix this here because indexes in database get messed up when you delete records
                 $menu[] = array('name' => 'Portfolio', 'link' => '/player/'.$id);
                 $menu[] = array('name' => 'Logout', 'link' => '/Authentication/logout');
                 if(strcmp($role, "admin") == 0) {

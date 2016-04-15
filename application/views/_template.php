@@ -10,6 +10,8 @@ if (!defined('APPPATH'))
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -28,5 +30,39 @@ if (!defined('APPPATH'))
                 {content}
             </div>
         </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Status</h4>
+        </div>
+        <div class="modal-body">
+            <table>
+                {table}
+                <tr>
+                    <td>
+                        {name}: 
+                    </td>
+                    <td>
+                        {tableData}
+                    </td>
+                </tr>
+                {/table}
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      
+        
     </body>
 </html>
