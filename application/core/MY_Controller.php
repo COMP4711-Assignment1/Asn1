@@ -21,36 +21,26 @@ class Application extends CI_Controller {
 
 	function __construct() {
             parent::__construct();
-            $this->data = array();
-            $this->data['title'] = 'Stock Ticker';	// our default title
-            $this->errors = array();
-            $this->data['pageTitle'] = 'welcome';   // our default page
 	}
+        
+        function index() {
+            $this->data['pageTitle'] = 'welcome';   // our default page
+        }
 
 	/**
 	 * Render this page
 	 */
 	function render() {
             $menu = array('menudata' => $this->makeMenu());
+            $this->data['title'] = 'Stock Ticker';	// our default title
             $this->data['menubar'] = $this->parser->parse('_menubar', $menu, true);
             $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-            $this->data['table'] = $this->readXML();
+            $this->data['table'] = $this->website->readXML();
 
             // finally, build the browser page!
             $this->data['data'] = &$this->data;
             $this->parser->parse('_template', $this->data);
 	}
-        
-        function readXML() {
-            $url = "http://bsx.jlparry.com/status";
-            $xml = simplexml_load_file($url);
-            $status = get_object_vars($xml);
-            $result = array();
-            foreach($status as $key => $var) {
-                $result[] = array('name' => $key, 'tableData' => $var);
-            }
-            return $result;
-        }
         
         function makeMenu() {
             $menu = array();

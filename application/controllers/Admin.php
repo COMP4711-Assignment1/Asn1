@@ -14,12 +14,17 @@ class Admin extends Application {
     }
     
     function displayDatabase() {
-        $query = $this->db->query("SELECT username, password, role FROM users");
+        $query = $this->db->query("SELECT username, password, role, id FROM users");
         $data = array();
 
         foreach($query->result() as $row) {
-            $data[] = array('name' => $row->username, 'password' => $row->password, 'role' => $row->role);
+            $data[] = array('name' => $row->username, 'password' => $row->password, 'role' => $row->role, 'link' => 'Admin/delete/'.$row->id);
         }
         return $data;
+    }
+    
+    function delete($id) {
+        $query = $this->db->query("DELETE FROM users WHERE id = $id");
+        redirect('/Admin');
     }
 }
