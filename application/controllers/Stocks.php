@@ -12,13 +12,17 @@ class Stocks extends Application {
 
     function getStock($code) {
         $this->data = $this->website->readCSV();
+        $this->data['stocks'] = $this->data;
         $record = $this->get($code);
         $this->data = array_merge($this->data, $record);
         $this->data['pagebody'] = 'history';
         $this->render();
     }
 
-    /*Returns a player from a parameter.*/
+    function getAllStocks() {
+        $data = $this->website->readCSV();
+        return $data;
+    }
 
     public function get($code) {
         foreach ($this->data as $record) {
@@ -28,5 +32,4 @@ class Stocks extends Application {
         }
         return null;
     }
-
 }

@@ -1,11 +1,12 @@
 <div class="login">
-    <form action="register" method="post">
+    <?php echo form_open_multipart('Authentication/register'); ?>
         Username: <input type="text" name="username">
         <br>
         Password: <input type="text" name="password">
         <br>
+        <input type='file' name='userfile' size='20'/>
         <div style="text-align:center">
-            <input type="submit">
+            <input type="submit" value="upload">
         </div>
     </form>
 </div>

@@ -5,6 +5,7 @@ define('DATA_FOLDER', './data');
 
 define('ROLE_USER','user');
 define('ROLE_ADMIN','admin');
+define('EXT', '.php'); //required for REST library
 
 /*
 |--------------------------------------------------------------------------
