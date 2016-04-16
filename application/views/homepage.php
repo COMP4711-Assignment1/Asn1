@@ -14,9 +14,22 @@
 
 <div id="playersPanel">
     {portfolios}
-	<hr>
-    <p><a href="{href}"><p>{who}</p></a>
-    <p>Equity: <br/>Cash:</p>
+    <hr>
+    <table>
+        <tr>
+            <td rowspan="3">
+                <img src="{image}"/>
+            </td>
+            <td>
+                <p><a href="{href}"><p>{who}</p></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Equity:<br/>Cash:</p>
+            </td>
+        </tr>
+    </table>
     {/portfolios}
     <hr>
 </div>
