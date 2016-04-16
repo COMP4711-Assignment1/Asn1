@@ -8,7 +8,7 @@
                 Password
             </td>
             <td>
-                Role
+                Role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
         </tr>
     {content}
@@ -21,6 +21,9 @@
         </td>
         <td>
             {role}
+        </td>
+        <td>
+            <a href="{link}">Delete</a>
         </td>
     </tr>
     {/content}

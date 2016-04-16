@@ -2,8 +2,13 @@
 <div id="stocksPanel">
     {stockportfolios}
     <hr id="line"/>
-    <a href="{href}"><img src="/data/{mug}" title="{who}" id="one"/></a>
-    <br/><h5>Current value: 0</h5>
+    Stock: <a href="/stock/{code}">{name}</a>
+    <br>
+    Code: {code}
+    <br>
+    Category: {category}
+    <br>
+    Value: {value}
     {/stockportfolios}
 </div> 
 
