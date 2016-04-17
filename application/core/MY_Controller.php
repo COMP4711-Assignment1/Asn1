@@ -45,10 +45,10 @@ class Application extends CI_Controller {
         function makeMenu() {
             $menu = array();
             $menu[] = array('name' => "Home", 'link' => '/');
-            $menu[] = array('name' => "Sign up", 'link' => '/Authentication/signup');
             $menu[] = array('name' => "Status", 'link' => '#myModal', "data" => 'modal');
             
             if(!ISSET($this->session->userdata['userRole'])) { //if not logged in
+                $menu[] = array('name' => "Sign up", 'link' => '/Authentication/signup');
                 $menu[] = array('name' => 'Login', 'link' => '/Authentication');
             }
             else {
