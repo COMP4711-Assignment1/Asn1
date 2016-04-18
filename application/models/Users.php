@@ -19,4 +19,24 @@ class Users extends MY_Model {
         $user = $this->db->query('SELECT * FROM users')->result_array();
         return $user;
     }
+    
+    public function reset() {
+        $this->db->query('UPDATE users SET stocks = \'\'');
+        $this->db->query('UPDATE users SET cash = 5000');
+    }
+    
+    public function getStocks($user) {
+        $stocks = $this->db->query('SELECT stocks from users where username = \''.$user.'\'')->row();
+        $split = explode(" ", $stocks->stocks);
+        $result = array();
+        for($i = 0; $i < count($split)-1; $i+=4) {
+            $result[] = array(
+                'stockCode' => $split[$i+1],
+                'certificate' => $split[$i],
+                'amount' => $split[$i+2],
+                'time' => $split[$i+3]
+            );
+        }
+        return $result;
+    }
 }

@@ -40,6 +40,7 @@ class Players extends Application {
         $this->data = array_merge($this->data, $record);
         $this->data['pagebody'] = 'portfolio';
         $this->data['stocks'] = $this->website->readCSV();
+        $this->data['owned'] = $this->users->getStocks($name);
         $this->render();
     }
     
