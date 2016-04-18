@@ -19,21 +19,19 @@ class Authentication extends Application {
         $this->render();
     }
 
-    /*Run when user clicks login button. Checks that username and password are
-     * correct.
-     */
+    /*Run when user clicks login button. Checks that username and password are correct.*/
     function submit() {
         $name = $this->input->post('username'); //get username
         $pass = $this->input->post('password'); //get password
 
         $user = $this->Users->getUser($name); //look in database for user with the same name
 
-        if ($user == null || $pass != $user->password) { //if no user was found or password doesn't match
+        if ($user == null || !hash_equals(crypt($pass, '231'), $user->password)) { //if no user was found or password doesn't match
             echo '<script>alert("Incorrent username or password."); window.location.href="index";</script>';
             return;
         }
 
-        if ($pass == $user->password) { //STORED AS PLAIN TEXT, ADD IN HASHING
+        if (hash_equals(crypt($pass, '231'), $user->password)) { //if the hashes match
             $this->session->set_userdata('userName', $name);
             $this->session->set_userdata('userRole', $user->role);
             $this->session->set_userdata('id', $user->id);
@@ -75,7 +73,7 @@ class Authentication extends Application {
 
                     $data = array(
                         'Username' => $user,
-                        'Password' => $password,
+                        'Password' => crypt($password, '231'),
                         'Role' => 'user',
                         'image' => './uploads/' . $response['upload_data']['file_name'],
                         'cash' => 5000
