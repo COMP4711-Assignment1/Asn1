@@ -2,9 +2,9 @@
 
 class Stocks extends Application {
 
-    var $token;
-    var $site = 'http://bsx.jlparry.com:4711/';
-    var $team = 'B99';
+    var $token; //agent token
+    var $site = 'http://bsx.jlparry.com:4711/'; //server url
+    var $team = 'B01'; //team number
 
     function __construct() {
         parent::__construct();
@@ -14,6 +14,7 @@ class Stocks extends Application {
         
     }
 
+    /*Purchases a stock from the BSX and updates the users cash accordingly.*/
     function buy() {
         $this->load->dbforge(); //load library
         if ($this->website->getState() != 3) { //if the market is closed
@@ -36,12 +37,18 @@ class Stocks extends Application {
             $text = $data['token'] . " " . $data['stock'] . " " . $data['amount'] . " " . $data['datetime'] . " "; //combine the pieces we need into a string
             $currentStocks = $this->db->query('SELECT stocks FROM users WHERE username = \''.$this->session->userdata['userName'].'\'')->row(); //get the stocks the player currently owns
             $combined = $currentStocks->stocks.$text; //combine the two strings
-
+            
+            $price = $this->website->getStockPrice($this->input->post('stock'), $this->input->post('number')); //get the price of the stocks
+            $cash = $this->users->getCash($this->session->userdata['userName']);
+            
+            $this->db->query('UPDATE users SET cash = '.($cash->cash-$price).' WHERE username = \''.$this->session->userdata['userName'].'\''); //update the players cash
+            
             $this->db->query('UPDATE users SET stocks = \''.$combined.'\' WHERE username = \''.$this->session->userdata['userName'].'\''); //update the players stocks
             redirect("/");
         }
     }
 
+    /*Sells a stock on the BSX, not currrently implemented.*/
     function sell() {
         $stuff = array(
             'server' => $this->site,
@@ -49,32 +56,32 @@ class Stocks extends Application {
             'token' => $this->session->userdata['token'],
             'player' => $this->session->userdata['userName'],
             'stock' => $this->input->post('stock'),
-            'quantity' => $this->input->post('number')
+            'quantity' => $this->input->post('number'),
+            'certificate' => '0'
         );
         $this->rest->initialize($stuff);
         $data = $this->rest->post('/sell', $stuff);
     }
 
-    /* Returns a stock from the given code. */
-
+    /*Returns a stock from the given code. */
     function getStock($code) {
         $this->data = $this->website->readCSV();
         $this->data['stocks'] = $this->data;
         $record = $this->get($code);
         $this->data = array_merge($this->data, $record);
         $this->data['pagebody'] = 'history';
+        $this->data['transactions'] = $this->website->getRecentStocks(20);
+        $this->data['price'] = $this->website->getStockPrice($code, 1);
         $this->render();
     }
 
-    /* Returns all stocks read in from site. */
-
+    /*Returns all stocks read in from site. */
     function getAllStocks() {
         $data = $this->website->readCSV();
         return $data;
     }
 
-    /* Returns a specific stock from a given code. */
-
+    /*Returns a specific stock from a given code. */
     function get($code) {
         foreach ($this->data as $record) {
             if ($record['code'] == $code) {
@@ -84,11 +91,12 @@ class Stocks extends Application {
         return null;
     }
 
+    /*Registers the agent with the BSX.*/
     function registerAgent() {
         $stuff = array(
             'server' => $this->site,
             'team' => $this->team,
-            'name' => 'changed',
+            'name' => 'InsertNameHere',
             'password' => 'tuesday'
         );
         $this->rest->initialize($stuff);
