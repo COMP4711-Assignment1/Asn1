@@ -52,12 +52,10 @@ class Authentication extends Application {
 
         if ($user == null || $password == null) { //if either field is null
             echo '<script>alert("Please enter a username and password."); window.location.href="signup";</script>';
-        }
-        else {
+        } else {
             if (strlen($user) > 16) { //if username is too long
                 echo '<script>alert("Username too long. Maximum 16 characters."); window.location.href="signup";</script>';
-            }
-            else {
+            } else {
                 $record = $this->db->query('SELECT username FROM users WHERE username = \'' . $user . '\'')->row(); //check to see if that name exists in the database
 
                 if ($record != null) { //if we get a result back then it does

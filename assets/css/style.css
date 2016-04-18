@@ -7,15 +7,15 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
 }
 .row>div {
-	margin-bottom:10px;
+    margin-bottom:10px;
 }
 #stocksPanel,#playersPanel,.row{
-	text-align:left;
-	color:#ffffff;
-	border-style:solid;
-	width:250px;
-	padding:20px;
-	background-color:#000000;
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:250px;
+    padding:20px;
+    background-color:#000000;
 }
 h1 {
     color:#ff0000;
@@ -42,6 +42,11 @@ table {
 #playersPanel{
     float:left;
 }
+
+td{
+    padding-right: 15px;
+}
+
 .row{
     width:100%;
 }
@@ -49,7 +54,7 @@ table {
     display:none; visibility:hidden; height:0; font-size:0;
 }
 #oneStock,#onePlayer{
-	margin-top:5px;
+    margin-top:5px;
 }
 .login
 {
