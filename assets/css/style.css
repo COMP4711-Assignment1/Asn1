@@ -1,23 +1,78 @@
 /* CSS definition file containing site stylesheet */
 body {
-	background-color:#0C3A6D
+    background: rgb(39,119,211); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, rgba(39,119,211,1) 0%, rgba(83,161,225,1) 25%, rgba(63,221,227,1) 40%, rgba(63,112,227,1) 56%, rgba(63,150,227,1) 72%, rgba(150,200,238,1) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(39,119,211,1) 0%,rgba(83,161,225,1) 25%,rgba(63,221,227,1) 40%,rgba(63,112,227,1) 56%,rgba(63,150,227,1) 72%,rgba(150,200,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(39,119,211,1) 0%,rgba(83,161,225,1) 25%,rgba(63,221,227,1) 40%,rgba(63,112,227,1) 56%,rgba(63,150,227,1) 72%,rgba(150,200,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2777d3', endColorstr='#96c8ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .row>div {
-	margin-bottom:10px;
+    margin-bottom:10px;
 }
-#stocksPanel,#playersPanel,.row{
-	text-align:left;
-	color:#ffffff;
-	border-style:solid;
-	width:175px;
-	padding:20px;
-	background-color:#000000;
-}
-#stocksPanel{
-    float:right;
-}
-#playersPanel{
+#playersPanel,.row{
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:20%;
+    padding:20px;
+    background-color:#000000;
     float:left;
+}
+
+td {
+    padding-right: 15px;
+}
+tr {
+    border-bottom: 1px solid #fff;
+}
+table {
+    color : white;
+}
+#stocksPanel {
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:20%;
+    padding:20px;
+    background-color:#000000;
+    float:left;
+}
+#transactionsPanel {
+    text-align:center;
+    color:#ffffff;
+    border-style:solid;
+    width:50%;
+    padding:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    background-color:#000000;
+    float:left;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+    color: #FFFFFF;
+}
+
+
+table.inline{
+    margin-left:50%;
+    display: inline-block;
+    vertical-align:top;
+}
+h1 {
+    color:#ff0000;
+}
+.admin {
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:400px;
+    padding:30px;
+    background-color:#000000;
+    margin-left:auto; 
+    margin-right:auto;
 }
 .row{
     width:100%;
@@ -26,8 +81,23 @@ body {
     display:none; visibility:hidden; height:0; font-size:0;
 }
 #oneStock,#onePlayer{
-	margin-top:5px;
+    margin-top:5px;
 }
-.login,.logoff {
-	float: right;
+.login
+{
+    display: block;
+    text-align: center;
+}
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    color:#ffffff;
+    border-style:solid;
+    width:300px;
+    padding:20px;
+    background-color:#000000;
 }

@@ -3,6 +3,10 @@
 // location of data folders
 define('DATA_FOLDER', './data');
 
+define('ROLE_USER','user');
+define('ROLE_ADMIN','admin');
+define('EXT', '.php'); //required for REST library
+
 /*
 |--------------------------------------------------------------------------
 | File Stream Modes

@@ -40,7 +40,8 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-$route['player/(:num)'] = 'welcome/player/$1';
-$route['stock/(:num)'] = 'welcome/stock/$1';
+$route['players/(:any)'] = 'players/getPlayer/$1';
+$route['portfolio/(:any)'] = 'players/portfolio/$1';
+$route['stock/(:any)'] = 'stocks/getStock/$1';
  /* End of file routes.php */
 /* Location: ./application/config/routes.php */
