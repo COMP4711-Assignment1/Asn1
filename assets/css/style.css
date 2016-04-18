@@ -1,52 +1,60 @@
 /* CSS definition file containing site stylesheet */
 body {
-    background: rgb(30,87,153);
-    background: -moz-radial-gradient(center, ellipse cover, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
-    background: radial-gradient(ellipse at center, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
+    background-color:#0C3A6D
 }
 .row>div {
     margin-bottom:10px;
 }
-#stocksPanel,#playersPanel,.row{
+#playersPanel,.row{
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:20%;
+    padding:20px;
+    background-color:#000000;
+    float:left;
+}
+
+#stocksPanel {
+    text-align:left;
+    color:#ffffff;
+    border-style:solid;
+    width:20%;
+    padding:20px;
+    background-color:#000000;
+    float:left;
+}
+#transactionsPanel {
+    text-align:center;
+    color:#ffffff;
+    border-style:solid;
+    width:50%;
+    padding:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    background-color:#000000;
+    float:left;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+    color: #FFFFFF;
+}
+
+h1 {
+    color:#ff0000;
+}
+.admin {
     text-align:left;
     color:#ffffff;
     border-style:solid;
     width:250px;
     padding:20px;
     background-color:#000000;
-}
-h1 {
-    color:#ff0000;
-}
-tr {
-    border-bottom: 1px solid #963939;
-}
-table {
-    color : white;
-}
-.admin {
-    text-align:left;
-    color:#ffffff;
-    border-style:solid;
-    width:400px;
-    padding:30px;
-    background-color:#000000;
     margin-left:auto; 
     margin-right:auto;
 }
-#stocksPanel{
-    float:right;
-}
-#playersPanel{
-    float:left;
-}
-
-td{
-    padding-right: 15px;
-}
-
 .row{
     width:100%;
 }

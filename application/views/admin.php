@@ -11,21 +11,21 @@
                 Role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
         </tr>
-        {content}
-        <tr>
-            <td>
-                {name}
-            </td>
-            <td>
-                {password}
-            </td>
-            <td>
-                {role}
-            </td>
-            <td>
-                <a href="{link}">Delete</a>
-            </td>
-        </tr>
-        {/content}
+    {content}
+    <tr>
+        <td>
+            {name}
+        </td>
+        <td>
+            {password}
+        </td>
+        <td>
+            {role}
+        </td>
+        <td>
+            <a href="{link}">Delete</a>
+        </td>
+    </tr>
+    {/content}
     </table>
 </div>

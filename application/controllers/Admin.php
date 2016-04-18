@@ -6,13 +6,16 @@ class Admin extends Application {
         $this->restrict(ROLE_ADMIN);
     }
     
+    /*Run on page load. Displays the admin view.*/
     function index() {
-        $this->data['pagebody'] = 'admin';
-        $this->data['content'] = $this->displayDatabase();
-        
-        $this->render();
+        $this->data['pagebody'] = 'admin'; //load the admin view
+        $this->data['content'] = $this->displayDatabase(); //get database entries for table
+        $this->render(); //render it
     }
     
+    /*Selectes each user from the database.
+     * Used to format the table for the admin view.
+     */
     function displayDatabase() {
         $query = $this->db->query("SELECT username, password, role, id FROM users");
         $data = array();
@@ -23,8 +26,10 @@ class Admin extends Application {
         return $data;
     }
     
+    /*Deletes a user from the database. Simpler than opening up PHPmyadmin
+      and deleting in there.*/
     function delete($id) {
-        $query = $this->db->query("DELETE FROM users WHERE id = $id");
+        $this->db->query("DELETE FROM users WHERE id = $id");
         redirect('/Admin');
     }
 }

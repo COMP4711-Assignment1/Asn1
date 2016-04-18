@@ -11,9 +11,12 @@ class Users extends MY_Model {
     }
     
     public function getUser($name) {
-        $user = $this->db->query('SELECT *FROM users WHERE username = \''. $name .'\'')->row();
+        $user = $this->db->query('SELECT * FROM users WHERE username = \''. $name .'\'')->row();
         return $user;
     }
     
+    public function getAllUsers() {
+        $user = $this->db->query('SELECT * FROM users')->result_array();
+        return $user;
+    }
 }
-
