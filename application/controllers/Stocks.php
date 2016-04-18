@@ -3,7 +3,7 @@
 class Stocks extends Application {
 
     var $token; //agent token
-    var $site = 'http://bsx.jlparry.com:4711/'; //server url
+    var $site = 'http://bsx.jlparry.com/'; //server url
     var $team = 'B01'; //team number
 
     function __construct() {
