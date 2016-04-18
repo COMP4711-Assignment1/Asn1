@@ -112,7 +112,8 @@ $autoload['language'] = array();
   |
  */
 
-$autoload['model'] = array('users');
+
+$autoload['model'] = array('users', 'game');
 
 
 /* End of file autoload.php */

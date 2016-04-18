@@ -17,18 +17,6 @@
                 </tr>
                 <tr>
                     <td>
-                        Players: 
-                    </td>
-                    <td>
-                        <select>
-                            {players}
-                            <option value="{id}">{username}</option>
-                            {/players}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         Amount: 
                     </td>
                     <td>

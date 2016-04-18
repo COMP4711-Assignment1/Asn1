@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td>
-                <p>Equity:</p>
+                <p>Equity: {equity}</p>
                 <p>Cash: {cash}</p>
             </td>
         </tr>

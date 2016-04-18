@@ -3,6 +3,8 @@
 class Stocks extends Application {
 
     var $token;
+    var $site = 'http://bsx.jlparry.com:4711/';
+    var $team = 'B99';
 
     function __construct() {
         parent::__construct();
@@ -20,8 +22,8 @@ class Stocks extends Application {
             $this->registerAgent(); //register the agent
 
             $stuff = array(
-                'server' => 'http://bsx.jlparry.com/',
-                'team' => 'B99',
+                'server' => $this->site,
+                'team' => $this->team,
                 'token' => $this->token,
                 'player' => $this->session->userdata['userName'],
                 'stock' => $this->input->post('stock'),
@@ -42,8 +44,8 @@ class Stocks extends Application {
 
     function sell() {
         $stuff = array(
-            'server' => 'http://bsx.jlparry.com/',
-            'team' => 'B99',
+            'server' => $this->site,
+            'team' => $this->team,
             'token' => $this->session->userdata['token'],
             'player' => $this->session->userdata['userName'],
             'stock' => $this->input->post('stock'),
@@ -84,15 +86,13 @@ class Stocks extends Application {
 
     function registerAgent() {
         $stuff = array(
-            'server' => 'http://bsx.jlparry.com/',
-            'team' => 'B99',
+            'server' => $this->site,
+            'team' => $this->team,
             'name' => 'changed',
             'password' => 'tuesday'
         );
         $this->rest->initialize($stuff);
         $data = $this->rest->post('/register', $stuff);
-        print_r($data);
         $this->token = $data['token'];
     }
-
 }
