@@ -1,55 +1,54 @@
 <?php
 
-/* * Default controller opened on page load. */
+/* Default controller opened on page load. */
 
 class Welcome extends Application {
-    /*     * Constructor. */
+    /* Constructor. */
 
     function __construct() {
         parent::__construct();
     }
 
-    /*     * Displays and populates data on front page. */
+    /* Displays and populates data on front page. */
 
     function index() {
-
-        /*$this->load->library('rest'); //Agent initializer
-        $stuff = array(
-            'server' => 'http://bsx.jlparry.com/',
-            'team' => 'B99',
-            'name' => 'test',
-            'password' => 'tuesday'
-        );
-        $this->rest->initialize($stuff);
-        $data = $this->rest->post('/register', $stuff);
-        print_r($data);*/
         $this->data['pagebody'] = 'homepage'; // this is the view we want shown
 
-        $this->players->retrieve(); //get player data in database
-
-        $players = $this->players->all();
-
-        $portfolios = array();
-
-        foreach ($players as $player) {
-            $portfolios[] = array('who' => $player['who'], 'href' => $player['where'], 'image' => $player['image']);
+        $data = $this->users->getAllUsers(); //get all of the users for users panel
+        $movements = $this->website->getMovements(); //get stock movements for center panel
+        
+        $recent = array(); //stores the last 10 stock movements
+        
+        $size = 10;
+        if(count($movements) < 10) { //if there arent 10 stock movements
+            $size = count($movements); //get however many there are
+        }
+        for($i = 0; $i < $size; $i++) {
+            array_push($recent, array_pop($movements)); //pop the last entries 
+        }
+        
+        $players = array(); //stores the new player
+        
+        foreach ($data as $user) {
+            $user['href'] = '/players/' . $user['username']; //give each player a link
+            array_push($players, $user);
         }
 
-        $this->data['portfolios'] = $portfolios;
-        $this->data['stockportfolios'] = $this->website->readCSV();
+        $this->data['players'] = $players; //add data to player panel
+        $this->data['stockportfolios'] = $this->website->readCSV(); //add data to stocks panel
+        $this->data['transactions'] = array_reverse($recent); //reverse and add data to transactions panel
 
         $this->render();
     }
-
-    /* Returns a player from a given id. */
-
-    function player($id) {
-        $this->players->retrieve(); //populate database since the players->data array gets cleared somewhere
-        $record = $this->players->data[$id - 1];
-        $this->data = array_merge($this->data, $record);
-        $this->data['pagebody'] = 'portfolio';
-        $this->data['stocks'] = $this->website->readCSV();
-        $this->data['players'] = $this->players->all();
-        $this->render();
+    
+    function calculateEquity($user) {
+        $stocks = $this->users->getStocks($user);
+        $csv = $this->website->readCSV();
+        //print_r($stocks);
+        //print_r($csv);
+        for($i = 0; $i < count($stocks)-1; $i+=4) {
+            $key = array_search('Oil', array_column($csv, 'name'));
+            print_r($key);
+        }
     }
 }

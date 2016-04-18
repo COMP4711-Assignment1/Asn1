@@ -33,9 +33,16 @@ class Application extends CI_Controller {
 	function render() {
             $menu = array('menudata' => $this->makeMenu());
             $this->data['title'] = 'Stock Ticker';	// our default title
-            $this->data['menubar'] = $this->parser->parse('_menubar', $menu, true);
-            $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-            $this->data['table'] = $this->website->readXML();
+            $this->data['menubar'] = $this->parser->parse('_menubar', $menu, true); //menubar items
+            $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true); //page content
+            
+            $xml = $this->website->readXML();
+            $this->data['table'] = $xml; //server status
+            
+            if($this->game->getRound() != $this->website->getRound()) { //if a new round has started
+                $this->db->query('UPDATE game SET round = '.$this->website->getRound()); //update the round
+                $this->users->reset(); //clear stocks and set cash to 5000
+            }
 
             // finally, build the browser page!
             $this->data['data'] = &$this->data;
@@ -53,8 +60,7 @@ class Application extends CI_Controller {
             }
             else {
                 $role = $this->session->userdata['userRole'];
-                $id = intval($this->session->userdata['id'])+1; //fix this here because indexes in database get messed up when you delete records
-                $menu[] = array('name' => 'Portfolio', 'link' => '/player/'.$id);
+                $menu[] = array('name' => 'Portfolio', 'link' => '/portfolio/'.$this->session->userdata['userName']);
                 $menu[] = array('name' => 'Logout', 'link' => '/Authentication/logout');
                 if(strcmp($role, "admin") == 0) {
                     array_push($menu, array('name' => 'Admin', 'link' => '/Admin'));

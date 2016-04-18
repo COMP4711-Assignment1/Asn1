@@ -1,16 +1,36 @@
 <div class="row">
-    <h2><strong>{who}</strong></h2>
+    <h2><strong>{username}</strong></h2>
     <div>
-        <select>
-            {stocks}
-            <option value="{id}">{name}</option>
-            {/stocks}
-        </select>
-        <br>
-        <select>
-            {players}
-            <option value="{id}">{who}</option>
-            {/players}
-        </select>
+        <table style="display:inline-block;">
+            <tr>
+                <td>
+                    <select onchange="location = this.options[this.selectedIndex].text;">
+                        <option selected disabled class="hideoption">{username}</option>
+                            {players}
+                            <option value="{id}">{username}</option>
+                            {/players}
+                        </select>
+                </td>
+            </tr>
+        </table>
+
+        <table class="inline">
+            {owned}
+            <tr>
+                <td>
+                    Stock: {stockCode}
+                </td>
+                <td>
+                    Certificate: {certificate}
+                </td>
+                <td>
+                    Amount: {amount}
+                </td>
+                <td>
+                    Time: {time}
+                </td>
+            </tr>
+            {/owned}
+        </table>
     </div>
 </div>
