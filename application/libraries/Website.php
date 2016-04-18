@@ -6,7 +6,7 @@ class Website {
     /* Parses XML from the status page of the BSX. */
 
     function readXML() {
-        $url = "http://bsx.jlparry.com:4711/status";
+        $url = "http://bsx.jlparry.com/status";
         $xml = simplexml_load_file($url);
         $status = get_object_vars($xml);
         $result = array();
@@ -30,14 +30,14 @@ class Website {
     }
 
     function getState() {
-        $url = "http://bsx.jlparry.com:4711/status";
+        $url = "http://bsx.jlparry.com/status";
         $xml = simplexml_load_file($url);
         $status = get_object_vars($xml);
         return $status['state'];
     }
 
     function getRound() {
-        $url = "http://bsx.jlparry.com:4711/status";
+        $url = "http://bsx.jlparry.com/status";
         $xml = simplexml_load_file($url);
         $status = get_object_vars($xml);
         return $status['round'];
@@ -58,7 +58,7 @@ class Website {
         $row = 0;
         $col = 0;
 
-        $handle = fopen("http://bsx.jlparry.com:4711/data/stocks", "r");
+        $handle = fopen("http://bsx.jlparry.com/data/stocks", "r");
         if ($handle) {
             while (($row = fgetcsv($handle, 4096)) !== false) {
                 if (empty($fields)) {
@@ -84,7 +84,7 @@ class Website {
         $row = 0;
         $col = 0;
 
-        $handle = fopen("http://bsx.jlparry.com:4711/data/movement", "r");
+        $handle = fopen("http://bsx.jlparry.com/data/movement", "r");
         if ($handle) {
             while (($row = fgetcsv($handle, 4096)) !== false) {
                 if (empty($fields)) {
