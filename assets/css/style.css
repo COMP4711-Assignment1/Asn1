@@ -42,6 +42,12 @@ table.center {
     color: #FFFFFF;
 }
 
+
+table.inline{
+    margin-left:50%;
+    display: inline-block;
+    vertical-align:top;
+}
 h1 {
     color:#ff0000;
 }
