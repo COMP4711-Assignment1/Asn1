@@ -25,6 +25,10 @@ class Users extends MY_Model {
         $this->db->query('UPDATE users SET cash = 5000');
     }
     
+    public function getCash($name) {
+        return $this->db->query('SELECT cash FROM users WHERE username = \''.$name.'\'')->row();
+    }
+    
     public function getStocks($user) {
         $stocks = $this->db->query('SELECT stocks from users where username = \''.$user.'\'')->row();
         $split = explode(" ", $stocks->stocks);
